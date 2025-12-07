@@ -1,0 +1,90 @@
+<odoo>
+     <record id="property_view_tree" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">property tree</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">propertys</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_available"/>
+                <field name="selling_price"/>
+                <field name="garden"/>
+                <field name="bedrooms"/>
+                <field name="garden_orientation" optional="1"/>
+                <field name="expected_price" optional="1"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="property_view_form" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">property form</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">propertys</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1> <field name="name"/></h1>
+
+
+
+                    </div>
+                    <group>
+                        <group string="General info.">
+
+                            <field name="date_available"/>
+                            <field name="selling_price"/>
+                            <field name="garden"/>
+                             <field name="facades" />
+                             <field name="garage" />
+                             <field name="bedrooms" />
+
+                        </group>
+                        <group string="Additional info.">
+                            <field name="bedrooms"/>
+                            <field name="garden_orientation"/>
+                            <field name="expected_price"/>
+                             <field name="description" />
+                             <field name="living_area" />
+                            <field name="living_area" />
+                        </group>
+                    </group>
+
+                </sheet>
+
+
+<!--                    <field name="name"/>-->
+<!--                    <field name="date_available"/>-->
+<!--                    <field name="selling_price"/>-->
+<!--                    <field name="garden"/>-->
+<!--                    <field name="bedrooms"/>-->
+<!--                    <field name="garden_orientation" optional="1"/>-->
+<!--                    <field name="expected_price" optional="1"/>-->
+            </form>
+        </field>
+    </record>
+
+     <!-- Action: بنعمل action يفتح شاشة الموديل -->
+    <record id="property_action" model="ir.actions.act_window">
+        <field name="name">Property action</field>
+        <field name="res_model">propertys</field>
+<!--        <field name="view_mode">tree,form</field>-->
+    </record>
+
+    <menuitem
+        id="property_menu_item"
+        name="Properties"
+        parent="properties_menu"
+        action="property_action"
+    />
+</odoo>

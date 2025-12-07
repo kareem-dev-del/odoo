@@ -1,0 +1,79 @@
+2025-11-27 08:53:45,182 1996 INFO ? odoo: Odoo version 17.0 
+2025-11-27 08:53:45,182 1996 INFO ? odoo: Using configuration file at D:\project17\odoo-17.0\odoo.conf 
+2025-11-27 08:53:45,182 1996 INFO ? odoo: addons paths: ['D:\\project17\\odoo-17.0\\odoo\\addons', 'c:\\users\\kareem\\appdata\\local\\openerp s.a\\odoo\\addons\\17.0', 'd:\\project17\\odoo-17.0\\addons', 'd:\\project17\\odoo-17.0\\odoo\\addons'] 
+2025-11-27 08:53:45,182 1996 INFO ? odoo: database: odoo17@localhost:5432 
+2025-11-27 08:53:45,421 1996 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+2025-11-27 08:53:45,724 1996 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-94TH2J1:8069 
+2025-11-27 08:54:02,188 1996 INFO ? odoo.service.server: Initiating shutdown 
+2025-11-27 08:54:02,189 1996 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-11-27 08:54:06,484 4456 INFO ? odoo: Odoo version 17.0 
+2025-11-27 08:54:06,485 4456 INFO ? odoo: Using configuration file at D:\project17\odoo-17.0\odoo.conf 
+2025-11-27 08:54:06,485 4456 INFO ? odoo: addons paths: ['D:\\project17\\odoo-17.0\\odoo\\addons', 'c:\\users\\kareem\\appdata\\local\\openerp s.a\\odoo\\addons\\17.0', 'd:\\project17\\odoo-17.0\\addons', 'd:\\project17\\odoo-17.0\\odoo\\addons'] 
+2025-11-27 08:54:06,485 4456 INFO ? odoo: database: odoo17@localhost:5432 
+2025-11-27 08:54:06,739 4456 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+2025-11-27 08:54:07,057 4456 INFO ? odoo.service.server: HTTP service (werkzeug) running on DESKTOP-94TH2J1:8069 
+2025-11-27 08:54:10,516 4456 ERROR ? odoo.modules.loading: Database odoo17 not initialized, you can force it with `-i base` 
+2025-11-27 08:54:10,516 4456 INFO ? odoo.modules.registry: Registry loaded in 0.218s 
+2025-11-27 08:54:10,518 4456 ERROR odoo17 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1984, in _serve_db
+    return service_model.retrying(self._serve_ir_http, self.env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\service\model.py", line 152, in retrying
+    result = func()
+             ^^^^^^
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1997, in _serve_ir_http
+    ir_http = self.registry['ir.http']
+              ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\modules\registry.py", line 209, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project17\odoo-17.0\odoo\http.py", line 2409, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1989, in _serve_db
+    exc.error_response = self.registry['ir.http']._handle_error(exc)
+                         ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\modules\registry.py", line 209, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-11-27 08:54:10,521 4456 INFO odoo17 werkzeug: 10.133.136.226 - - [27/Nov/2025 08:54:10] "GET / HTTP/1.1" 500 - 8 0.024 0.387
+2025-11-27 08:54:11,938 4456 ERROR odoo17 odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1984, in _serve_db
+    return service_model.retrying(self._serve_ir_http, self.env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\service\model.py", line 152, in retrying
+    result = func()
+             ^^^^^^
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1997, in _serve_ir_http
+    ir_http = self.registry['ir.http']
+              ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\modules\registry.py", line 209, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project17\odoo-17.0\odoo\http.py", line 2409, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\http.py", line 1989, in _serve_db
+    exc.error_response = self.registry['ir.http']._handle_error(exc)
+                         ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\project17\odoo-17.0\odoo\modules\registry.py", line 209, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-11-27 08:54:11,940 4456 INFO odoo17 werkzeug: 10.133.136.226 - - [27/Nov/2025 08:54:11] "GET /websocket?version=17.0-3 HTTP/1.1" 500 - 2 0.007 0.070
+2025-11-27 08:54:24,450 4456 INFO ? odoo.service.server: Initiating shutdown 
+2025-11-27 08:54:24,450 4456 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-11-27 08:54:25,504 4456 INFO ? odoo.sql_db: ConnectionPool(used=0/count=0/max=64): Closed 3 connections  
