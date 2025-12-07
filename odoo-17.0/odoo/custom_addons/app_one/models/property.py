@@ -22,6 +22,8 @@ class Property(models.Model):
         ('west','West'),
     ])
 
+    owner_id = fields.Many2one('owner')
+
     _sql_constraints = [
         ('unique_name', 'unique(name)', 'The name already exists!')
     ]

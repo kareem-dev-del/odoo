@@ -12,4 +12,6 @@
         'views/base_menu.xml',
         'views/property_veiw.xml',
         'views/owner_veiw.xml',
-    
+    ],
+    'application': True,
+}

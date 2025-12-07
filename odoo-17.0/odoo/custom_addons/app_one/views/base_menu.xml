@@ -8,4 +8,11 @@
             name="Porperties"
             parent="real_estate_root_menu"
     />
-     <menui
+     <menuitem
+                id="configration_menu"
+                name="Configration"
+                parent="real_estate_root_menu"
+        />
+
+
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+
+     View tree definition: بنعمل شاشة List View للـ property
+    <record id="owner_view_tree" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">owner tree</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">owner</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="address"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="owner_view_form" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">owner form</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">owner</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1> <field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+
+                            <field name="phone"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action: بنعمل action يفتح شاشة الموديل -->
+    <record id="owner_action" model="ir.actions.act_window">
+        <field name="name">Owner action</field>
+        <field name="res_model">owner</field>
+<!--        <field name="view_mode">tree,form</field>-->
+    </record>
+
+    <!-- Menu item: بنعمل Menu تظهر في Odoo وتفتح الـ action -->
+    <menuitem
+        id="owner_menu_item"
+        name="Owner"
+        parent="configration_menu"
+        action="owner_action"
+    />
+
+</odoo>
