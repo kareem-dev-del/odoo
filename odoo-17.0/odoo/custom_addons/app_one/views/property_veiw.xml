@@ -19,7 +19,7 @@
                 <field name="garden"/>
                 <field name="bedrooms"/>
                 <field name="garden_orientation" />
-                <field name="expected_price" />
+                <field name="expected_price"/>
             </tree>
         </field>
     </record>
