@@ -1,3 +1,5 @@
+from email.policy import default
+
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
@@ -23,6 +25,17 @@ class Property(models.Model):
     ])
 
     owner_id = fields.Many2one('owner')
+    tag_ids = fields.Many2many('tag')
+
+    state =fields.Selection([
+        ('draft','Draft'),
+        ('pending','Pending'),
+        ('sold','Sold'),
+
+    ],default='draft')
+
+
+
 
     _sql_constraints = [
         ('unique_name', 'unique(name)', 'The name already exists!')
@@ -33,6 +46,32 @@ class Property(models.Model):
         for i in self:
             if i.bedrooms < 1:
                 raise ValidationError('Please enter a valid number of bedrooms!')
+
+
+    def action_draft(self):
+        for rec in self:
+          print("inside action draft ")
+          rec.state = 'draft'
+          # rec.write({
+          #     'state': 'draft',
+          # })
+    def action_pending(self):
+        for rec in self:
+          print("inside action pending  ")
+          # rec.state = 'draft'
+          rec.write({
+              'state': 'pending',
+          })
+    def action_sold(self):
+        for rec in self:
+          print("inside action sold  ")
+          # rec.state = 'draft'
+          rec.write({
+              'state': 'sold',
+          })
+
+
+
 #*********CRUD**************
     # @api.model_create_multi
     # def create(self, vals_list):

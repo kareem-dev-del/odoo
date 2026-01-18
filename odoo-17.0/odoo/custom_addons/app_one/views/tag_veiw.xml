@@ -1,0 +1,58 @@
+<odoo>
+
+     View tree definition: بنعمل شاشة List View للـ property
+    <record id="tag_view_tree" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">tag tree</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">tag</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="owner_view_form" model="ir.ui.view">
+        <!-- اسم الفيو للتمييز -->
+        <field name="name">owner form</field>
+
+        <!-- الموديل اللي الفيو تابع ليه -->
+        <field name="model">owner</field>
+
+        <!-- شكل الفيو من جوه -->
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1> <field name="name"/></h1>
+                    </div>
+                    <group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action: بنعمل action يفتح شاشة الموديل -->
+    <record id="tag_action" model="ir.actions.act_window">
+        <field name="name">Owner action</field>
+        <field name="res_model">owner</field>
+<!--        <field name="view_mode">tree,form</field>-->
+    </record>
+
+    <!-- Menu item: بنعمل Menu تظهر في Odoo وتفتح الـ action -->
+    <menuitem
+        id="tag_menu_item"
+        name="Tag"
+        parent="configration_menu"
+        action="tag_action"
+    />
+
+</odoo>
