@@ -2,6 +2,8 @@ from email.policy import default
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from odoo.tools.populate import compute
+
 
 class Property(models.Model):
     _name = 'property'
@@ -11,6 +13,7 @@ class Property(models.Model):
     date_available = fields.Date()
     expected_price = fields.Float()
     selling_price = fields.Float()
+    diff=fields.Float(compute='_compute_diff',readonly=0)
     bedrooms = fields.Integer()
     living_area = fields.Integer()
     facades = fields.Integer()
@@ -40,6 +43,15 @@ class Property(models.Model):
     _sql_constraints = [
         ('unique_name', 'unique(name)', 'The name already exists!')
     ]
+
+    def _compute_diff(self):
+        for rec in self:
+            rec.diff = rec.expected_price - rec.selling_price
+
+
+
+
+
 
     @api.constrains('bedrooms')
     def _check_bedrooms_greater_zero(self):

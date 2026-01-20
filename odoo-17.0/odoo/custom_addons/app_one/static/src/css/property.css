@@ -1,0 +1,13 @@
+.header_custom table thead > tr > th {
+    background-color: #8BD3EA !important;
+    color: #1f2933 !important;      /* لون أهدى من الأحمر */
+    font-weight: 600 !important;    /* الخط تخين */
+    text-align: center;             /* توسيط النص */
+    padding: 12px 10px;             /* مسافة مريحة */
+    border-bottom: 2px solid #5bbcd6;
+}
+
+/* العمود التاني */
+.header_custom table thead > tr > th:nth-child(2) {
+    width: 250px !important;
+}
