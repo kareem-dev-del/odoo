@@ -7,10 +7,14 @@ from odoo.tools.populate import compute
 
 class Property(models.Model):
     _name = 'property'
+    _description = 'Property Record'
+    _inherit = ['mail.thread','mail.activity.mixin']
+
+
     name = fields.Char(required=True, default='kareem')
-    description = fields.Text()
+    description = fields.Text(tracking=1)
     postcode = fields.Char()
-    date_available = fields.Date()
+    date_available = fields.Date(tracking=1)
     expected_price = fields.Float()
     selling_price = fields.Float()
     diff=fields.Float(compute='_compute_diff',readonly=0)
@@ -30,6 +34,9 @@ class Property(models.Model):
     owner_id = fields.Many2one('owner')
     tag_ids = fields.Many2many('tag')
 
+    owner_address = fields.Char(related='owner_id.address',readonly=0)
+    owner_phone = fields.Char(related='owner_id.phone',readonly=0)
+
     state =fields.Selection([
         ('draft','Draft'),
         ('pending','Pending'),
@@ -43,6 +50,10 @@ class Property(models.Model):
     _sql_constraints = [
         ('unique_name', 'unique(name)', 'The name already exists!')
     ]
+
+    line_ids = fields.One2many('property.line','property_id')
+
+
 
     def _compute_diff(self):
         for rec in self:
@@ -109,3 +120,15 @@ class Property(models.Model):
     #     res =super(Property,self).unlink()
     #     print("valid4")
     #     return res
+
+
+
+class PropertyLine(models.Model):
+    _name = 'property.line'
+
+    property_id = fields.Many2one('property')
+    area = fields.Float()
+    description = fields.Char()
+
+
+

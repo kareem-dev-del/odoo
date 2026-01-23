@@ -6,6 +6,7 @@
     'depends': [
         'base',
         'sale_management',
+        'mail',
         #'account_accountant',
     ],
     'data': [
