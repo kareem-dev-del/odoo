@@ -1,0 +1,160 @@
+<odoo>
+
+    <!-- ================= Tree View ================= -->
+    <record id="view_todo_task_tree" model="ir.ui.view">
+        <field name="name">todo.task.tree</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+
+                <field name="name"/>
+                <field name="assign_to"/>
+                <field name="due_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+  <!-- ================= Kanban View ================= -->
+<record id="view_todo_task_kanban" model="ir.ui.view">
+    <field name="name">todo.task.kanban</field>
+    <field name="model">todo.task</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="status">
+            <field name="name"/>
+            <field name="assign_to"/>
+            <field name="due_date"/>
+            <field name="status"/>
+            <field name="deadline_state"/> <!-- لازم تضيف هذا الحقل -->
+
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card
+                        #{record.deadline_state.raw_value == 'late' and 'bg-danger' or ''}
+                        #{record.deadline_state.raw_value == 'due_soon' and 'bg-warning' or ''}">
+
+                        <div class="o_kanban_record_top">
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                        </div>
+
+                        <div>
+                            👤 <field name="assign_to"/>
+                        </div>
+
+                        <div>
+                            📅 <field name="due_date"/>
+                        </div>
+
+                        <div>
+                            <field name="status"/>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
+
+
+
+    <!-- ================= Form View ================= -->
+    <record id="view_todo_task_form" model="ir.ui.view">
+        <field name="name">todo.task.form</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                  <field name="status"
+                     widget="statusbar"
+                     statusbar_visible="new,progress,done"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="reference" readonly="1"/>
+
+                        <field name="name"/>
+                        <field name="assign_to"/>
+                        <field name="due_date"/>
+                        <field name="status"/>
+                    </group>
+
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- ================= Search View ================= -->
+<record id="view_todo_task_search" model="ir.ui.view">
+    <field name="name">todo.task.search</field>
+    <field name="model">todo.task</field>
+    <field name="arch" type="xml">
+        <search string="Search Tasks">
+
+            <!-- Search Inputs -->
+            <group>
+                <field name="name"/>
+                <field name="assign_to"/>
+            </group>
+
+            <!-- Filters -->
+            <group string="Status">
+                <filter name="filter_new"
+                        string="New"
+                        domain="[('status','=','new')]"/>
+
+                <filter name="filter_progress"
+                        string="In Progress"
+                        domain="[('status','=','progress')]"/>
+
+                <filter name="filter_done"
+                        string="Completed"
+                        domain="[('status','=','done')]"/>
+            </group>
+
+            <!-- Group By -->
+            <group string="Group By">
+                <filter name="group_assign"
+                        string="Assign To"
+                        context="{'group_by': 'assign_to'}"/>
+
+                <filter name="group_status"
+                        string="Status"
+                        context="{'group_by': 'status'}"/>
+
+                <filter name="group_date"
+                        string="Due Date"
+                        context="{'group_by': 'due_date'}"/>
+            </group>
+
+        </search>
+    </field>
+</record>
+
+
+
+    <!-- ================= Action ================= -->
+    <record id="action_todo_task" model="ir.actions.act_window">
+        <field name="name">All Tasks</field>
+        <field name="res_model">todo.task</field>
+       <field name="view_mode">kanban,tree,form</field>
+
+        <field name="search_view_id" ref="view_todo_task_search"/>
+    </record>
+
+
+    <!-- ================= Menu ================= -->
+    <menuitem id="menu_todo_root" name="To-Do"/>
+    <menuitem id="menu_todo_tasks"
+              name="All Tasks"
+              parent="menu_todo_root"
+              action="action_todo_task"/>
+
+</odoo>

@@ -16,6 +16,8 @@
         'views/owner_veiw.xml',
         'views/tag_veiw.xml',
         'views/sale_order_view.xml',
+        'views/todo_task_views.xml',
+        'data/sequence.xml',  # ← ضيف دي
     ],
     'assets': {
         'web.assets_backend': [
