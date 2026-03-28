@@ -52,6 +52,7 @@ class Property(models.Model):
     ]
 
     line_ids = fields.One2many('property.line','property_id')
+    active = fields.Boolean(default=True)
 
 
 

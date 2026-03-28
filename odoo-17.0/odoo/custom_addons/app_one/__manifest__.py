@@ -17,7 +17,8 @@
         'views/tag_veiw.xml',
         'views/sale_order_view.xml',
         'views/todo_task_views.xml',
-        'data/sequence.xml',  # ← ضيف دي
+        'views/building_veiw.xml',
+        'data/sequence.xml',
     ],
     'assets': {
         'web.assets_backend': [

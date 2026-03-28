@@ -21,6 +21,7 @@
                 <field name="state"/>
                 <field name="bedrooms"/>
                 <field name="garden_orientation" />
+                <field name="active"/>
 
             </tree>
         </field>
@@ -68,6 +69,7 @@
                             <field name="garden"/>
                              <field name="facades" />
                              <field name="garage" />
+                             <field name="active"/>
 
 
                         </group>
