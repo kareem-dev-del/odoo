@@ -41,6 +41,7 @@ class Property(models.Model):
         ('draft','Draft'),
         ('pending','Pending'),
         ('sold','Sold'),
+        ('closed','Closed'),
 
     ],default='draft')
 
@@ -93,6 +94,10 @@ class Property(models.Model):
           rec.write({
               'state': 'sold',
           })
+    def action_closed(self):
+        for rec in self:
+            rec.state = 'closed'
+
 
 
 
