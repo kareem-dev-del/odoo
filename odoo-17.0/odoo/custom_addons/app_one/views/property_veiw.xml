@@ -131,6 +131,18 @@
         </field>
     </record>
 
+    <record id="check_expected_selling_cron" model="ir.cron">
+        <field name="name">Property: Check selling date</field>
+        <field name="model_id" ref="model_property"/>
+         <field name="state">code</field>
+        <field name="code">model.check_expected_selling_date()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+         <field name="numbercall">-1</field>
+         <field name="active">True</field>
+    </record>
+
+
     <!-- Menu item: بنعمل Menu تظهر في Odoo وتفتح الـ action -->
     <menuitem
         id="property_menu_item"

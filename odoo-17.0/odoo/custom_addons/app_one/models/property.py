@@ -15,6 +15,8 @@ class Property(models.Model):
     description = fields.Text(tracking=1)
     postcode = fields.Char()
     date_available = fields.Date(tracking=1)
+    expected_selling_date = fields.Date(tracking=1)
+    is_late = fields.Boolean()
     expected_price = fields.Float()
     selling_price = fields.Float()
     diff=fields.Float(compute='_compute_diff',readonly=0)
@@ -97,6 +99,12 @@ class Property(models.Model):
     def action_closed(self):
         for rec in self:
             rec.state = 'closed'
+
+
+    def check_expected_selling_date(self):
+        print(self)
+        property_ids = self.search([])
+        print("inside check_expected_selling_date")
 
 
 
