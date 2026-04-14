@@ -104,7 +104,10 @@ class Property(models.Model):
     def check_expected_selling_date(self):
         print(self)
         property_ids = self.search([])
-        print("inside check_expected_selling_date")
+        for rec in property_ids:
+            if rec.expected_selling_date and rec.expected_selling_date < fields.date.today():
+                rec.is_late= True
+
 
 
 
